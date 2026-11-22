@@ -24,9 +24,9 @@ def map_agent(state: dict) -> dict:
     Output: updated state with map_info
     """
     location = state.get("location", "")
-    trace = state.get("trace", [])
+    trace = []
 
-    coords = _FALLBACK_COORDS.copy()
+    coords = _FALLBACK_COORDS.copy()  # Unverified display fallback; not an incident location
     resolved = False
 
     try:
@@ -40,7 +40,7 @@ def map_agent(state: dict) -> dict:
 
     # Simplified distance estimate (in a real system this would come from
     # an actual database of unit locations)
-    estimated_distance_km = 3.5 if resolved else 5.0
+    estimated_distance_km = None  # No dispatch network or routing data exists
 
     map_info = {
         "lat": coords["lat"],

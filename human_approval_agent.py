@@ -8,7 +8,7 @@ is considered authorized for deployment.
 
 def human_approval_agent(state: dict) -> dict:
 
-    trace = state.get("trace", [])
+    trace = []
 
     # Read exactly what came from the UI / previous state
     raw_status = state.get("approval_status", "pending")
@@ -42,7 +42,7 @@ def human_approval_agent(state: dict) -> dict:
 
         approval_note = (
             "Human approval granted. "
-            "The plan is authorized for deployment."
+            "The simulation has been approved for review only; no operational dispatch is authorized."
         )
 
     elif approval_status == "rejected":

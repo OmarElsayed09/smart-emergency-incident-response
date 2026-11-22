@@ -14,7 +14,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
-_BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 _DATA_DIR = os.path.join(_BASE_DIR, "data", "procedures")
 _PERSIST_DIR = os.path.join(_BASE_DIR, "vectorstore")
 
@@ -33,6 +33,9 @@ def _get_vectorstore():
     global _vectorstore
     if _vectorstore is not None:
         return _vectorstore
+
+    if not os.path.isdir(_DATA_DIR) or not any(name.endswith(".txt") for name in os.listdir(_DATA_DIR)):
+        raise FileNotFoundError("No procedure files found in data/procedures; add reviewed .txt documents first.")
 
     embeddings = _get_embeddings()
 
@@ -65,7 +68,7 @@ def knowledge_rag(state: dict) -> dict:
     Input: state containing 'incident_type' and 'report'
     Output: updated state with 'procedures' (retrieved procedures text)
     """
-    trace = state.get("trace", [])
+    trace = []
 
     try:
         vectorstore = _get_vectorstore()

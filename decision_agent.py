@@ -9,7 +9,7 @@ from llm import get_llm
 
 def decision_agent(state: dict) -> dict:
     llm = get_llm(temperature=0.2)
-    trace = state.get("trace", [])
+    trace = []
 
     prompt = f"""
 You are an emergency coordination officer. Based on the information below,

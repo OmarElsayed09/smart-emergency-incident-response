@@ -1,3 +1,5 @@
+> **Prototype safety notice:** This is a portfolio simulation, not an operational emergency service. Resource availability, recommendations, safety checks, and human-approval flow are not validated for real incident response. Call local emergency services in an actual emergency. The repository currently includes no verified procedure documents in `data/procedures/`; add reviewed sources before relying on retrieval during experiments.
+
 # 🚨 Smart Emergency Incident Response System
 
 ### Multi-Agent AI + RAG for Safety-Aware Emergency Response Coordination
@@ -105,7 +107,7 @@ The extracted information becomes shared state for the downstream agents.
 
 Processes the incident location and attempts to resolve it safely.
 
-If geocoding fails, the system uses **safe default coordinates** instead of allowing the workflow to fail.
+If geocoding fails, the system uses **unverified demonstration coordinates** instead of allowing the workflow to fail.
 
 ---
 
@@ -191,11 +193,11 @@ Review Comments
 
 #### Pending
 
-The plan requires additional review and is not authorized for deployment.
+The plan requires additional review and is not approved for simulation review.
 
 #### Approved
 
-The plan has received human authorization and is marked as authorized for deployment.
+The plan has received human authorization and is marked as approved for simulation review.
 
 #### Rejected
 
@@ -209,7 +211,7 @@ Rejected plans are expected to include review comments, and the UI warns when co
 
 After the workflow completes, the system generates a final action plan.
 
-The plan includes a clear authorization status indicating whether the response is authorized for deployment.
+The plan includes a clear authorization status indicating whether the response is approved for simulation review.
 
 The action plan can be downloaded directly from the Streamlit interface as a `.txt` file.
 

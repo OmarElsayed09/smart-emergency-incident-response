@@ -7,9 +7,9 @@ a final, formatted action plan ready to display/print/send to field teams.
 
 
 def action_plan_agent(state: dict) -> dict:
-    trace = state.get("trace", [])
+    trace = []
 
-    if state.get("approval_granted"):
+    if state.get("approval_granted") and state.get("safety_ok") and state.get("evidence_check_ok"):
         status_icon = "🟢"
     elif state.get("safety_ok") and state.get("evidence_check_ok"):
         status_icon = "🟡"
@@ -17,8 +17,9 @@ def action_plan_agent(state: dict) -> dict:
         status_icon = "🔴"
 
     authorization_status = (
-        "AUTHORIZED for deployment." if state.get("approval_granted") else
-        "NOT AUTHORIZED until human approval is granted."
+        "SIMULATION REVIEW APPROVED (not operational authorization)."
+        if state.get("approval_granted") and state.get("safety_ok") and state.get("evidence_check_ok")
+        else "SIMULATION ONLY — no authorization for emergency dispatch."
     )
 
     plan = f"""
@@ -30,7 +31,7 @@ Incident type: {state.get('incident_type')}
 Severity: {state.get('severity')}
 People at risk: {state.get('people_at_risk')}
 
-Dispatched resources: {state.get('resources')}
+Simulated resources: {state.get('resources')}
 
 Executive decision:
 {state.get('decision')}
