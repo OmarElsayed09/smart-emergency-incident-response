@@ -17,7 +17,9 @@ def action_plan_agent(state: dict) -> dict:
         status_icon = "🔴"
 
     authorization_status = (
-        "SIMULATION REVIEW APPROVED (not operational authorization)."\n        if state.get("approval_granted") and state.get("safety_ok") and state.get("evidence_check_ok")\n        else "SIMULATION ONLY — no authorization for emergency dispatch."
+        "SIMULATION REVIEW APPROVED (not operational authorization)."
+        if state.get("approval_granted") and state.get("safety_ok") and state.get("evidence_check_ok")
+        else "SIMULATION ONLY — no authorization for emergency dispatch."
     )
 
     plan = f"""
