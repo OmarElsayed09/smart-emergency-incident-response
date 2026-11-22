@@ -10,7 +10,7 @@ from llm import get_llm
 
 
 def safety_checker(state: dict) -> dict:
-    trace = state.get("trace", [])
+    trace = []
     severity = state.get("severity", "medium").lower()
     resources = state.get("resources", {})
 
