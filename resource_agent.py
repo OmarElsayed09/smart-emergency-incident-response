@@ -18,7 +18,7 @@ def resource_agent(state: dict) -> dict:
     incident_type = state.get("incident_type", "").lower()
     severity = state.get("severity", "medium").lower()
     people_at_risk = state.get("people_at_risk", 0)
-    trace = state.get("trace", [])
+    trace = []
 
     needs_fire_truck = "fire" in incident_type
     needs_ambulance = any(term in incident_type for term in ["fire", "medical", "accident", "rescue", "chemical"])
@@ -49,6 +49,6 @@ def resource_agent(state: dict) -> dict:
                   f"{rescue_units} rescue unit(s)" if rescue_units else None]
     dispatched_text = ", ".join([item for item in dispatched if item])
 
-    trace.append(f"Resource Agent: dispatched {dispatched_text}")
+    trace.append(f"Resource Agent: simulated {dispatched_text}")
 
     return {"resources": resources, "trace": trace}
