@@ -1,4 +1,4 @@
-# 🚨 Smart Emergency Incident Response System
+> **Prototype safety notice:** This is a portfolio simulation, not an operational emergency service. Resource availability, recommendations, safety checks, and human-approval flow are not validated for real incident response. Call local emergency services in an actual emergency. The repository currently includes no verified procedure documents in `data/procedures/`; add reviewed sources before relying on retrieval during experiments.\n\n# 🚨 Smart Emergency Incident Response System
 
 ### Multi-Agent AI + RAG for Safety-Aware Emergency Response Coordination
 
