@@ -1,4 +1,4 @@
-name: Python syntax and import checks
+name: Python syntax and repository tests
 on:
   pull_request:
   push:
@@ -13,12 +13,5 @@ jobs:
           python-version: '3.11'
       - name: Compile Python modules
         run: python -m compileall -q .
-      - name: Check graph imports
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          source = Path("graph.py").read_text(encoding="utf-8")
-          assert "from agents." not in source
-          for name in ["incident_agent", "map_agent", "knowledge_rag", "resource_agent", "decision_agent", "safety_checker", "evidence_verifier", "human_approval_agent", "action_plan_agent"]:
-              assert Path(name + ".py").is_file()
-          PY
+      - name: Test repository layout and action-plan authorization
+        run: python -m unittest discover -s tests -p 'test_repository_layout.py' -v
