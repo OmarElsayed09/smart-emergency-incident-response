@@ -102,7 +102,7 @@ Report:
     response = llm.invoke(prompt)
     result = _parse_incident_result(response.content)
 
-    trace = state.get("trace", [])
+    trace = []
     trace.append("Incident Agent: successfully extracted incident data")
 
     return {
