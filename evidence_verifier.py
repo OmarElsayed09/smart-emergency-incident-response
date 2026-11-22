@@ -34,7 +34,7 @@ def _parse_json_response(raw_text: str) -> dict:
 
 def evidence_verifier(state: dict) -> dict:
     llm = get_llm(temperature=0.0)
-    trace = state.get("trace", [])
+    trace = []
 
     prompt = f"""
 You are an emergency verification officer. Review the proposed coordination
