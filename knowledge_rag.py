@@ -68,7 +68,7 @@ def knowledge_rag(state: dict) -> dict:
     Input: state containing 'incident_type' and 'report'
     Output: updated state with 'procedures' (retrieved procedures text)
     """
-    trace = state.get("trace", [])
+    trace = []
 
     try:
         vectorstore = _get_vectorstore()
