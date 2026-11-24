@@ -679,3 +679,7 @@ Real-world deployment would require extensive validation, reliable data sources,
 * Review History CSV Export
 * Streamlit Dashboard
 * Fallback Mechanisms for Critical Workflow Components
+
+## Screenshot
+
+![Simulated incident response workflow](docs/screenshot.png)
